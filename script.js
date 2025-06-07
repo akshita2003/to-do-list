@@ -5,38 +5,65 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const tasks = [];
 
-    // Function to add a task to the list
+    // Function to add a task
     function addTask() {
         const taskText = taskInput.value.trim();
 
         if (taskText === "") {
+            alert("Please enter a task.");
             return;
         }
 
-        tasks.push(taskText);
+        const taskObj = {
+            text: taskText,
+            completed: false
+        };
+
+        tasks.push(taskObj);
         taskInput.value = "";
         renderTasks();
     }
 
-    // Function to render the list of tasks
+    // Function to render tasks
     function renderTasks() {
         taskList.innerHTML = "";
 
-        for (let i = 0; i < tasks.length; i++) {
-            const task = tasks[i];
+        tasks.forEach((taskObj, index) => {
             const listItem = document.createElement("li");
-            listItem.textContent = task;
-            
+
+            // Toggle completed on click of listItem
             listItem.addEventListener("click", () => {
-                tasks.splice(i, 1);
+                taskObj.completed = !taskObj.completed;
                 renderTasks();
             });
 
+            // Display task text
+            listItem.textContent = taskObj.text;
+            if (taskObj.completed) {
+                listItem.classList.add("completed");
+            }
+
+            // Create delete button
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete";
+            deleteBtn.className = "delete-btn";
+
+            // Prevent click propagation to parent li
+            deleteBtn.addEventListener("click", (event) => {
+                event.stopPropagation();
+                tasks.splice(index, 1);
+                renderTasks();
+            });
+
+            listItem.appendChild(deleteBtn);
             taskList.appendChild(listItem);
-        }
+        });
     }
 
+    // Add task button click
     addTaskButton.addEventListener("click", addTask);
+
+    // Add task on Enter key
     taskInput.addEventListener("keypress", (event) => {
         if (event.key === "Enter") {
             addTask();

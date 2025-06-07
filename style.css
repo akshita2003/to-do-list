@@ -1,71 +1,107 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f9f9f9;
     margin: 0;
     padding: 0;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+
 }
 
 .container {
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 450px;
+    width: 100%;
     background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
-    color: #333;
-    font-size: 28px;
+    color: #222;
+    font-size: 30px;
     margin-bottom: 20px;
 }
 
 .input-container {
     display: flex;
-    margin-top: 20px;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 input[type="text"] {
     flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
     font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #4CAF50;
+    outline: none;
 }
 
 button#addTask {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: 12px 20px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button#addTask:hover {
+    background-color: #45a049;
 }
 
 ul {
     list-style-type: none;
     padding: 0;
-    margin-top: 20px;
+    margin: 0;
 }
 
 li {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
-    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 12px;
+    margin-bottom: 10px;
     font-size: 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, text-decoration 0.3s ease;
+    cursor: pointer;
 }
 
 li.completed {
-    background-color: #e0e0e0;
+    background-color: #f0f0f0;
     text-decoration: line-through;
+    color: #999;
 }
 
+button.delete-btn {
+    background-color: #e74c3c;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
 
-
-
-.container:hover {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+button.delete-btn:hover {
+    background-color: #c0392b;
 }
